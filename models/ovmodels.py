@@ -4,7 +4,7 @@ from llama_index.embeddings.huggingface_openvino import OpenVINOEmbedding
 
 core = ov.Core()
 ov_config = {"PERFORMANCE_HINT": "LATENCY", "NUM_STREAMS": "1", "CACHE_DIR": ""}
-model_path = "models/ovmodels/Mistral-7B-Instruct-v0.3-ov-int4"
+model_path = "models/ovmodels/Meta-Llama-3-8B-Instruct-ov"
 embedding_model_path = "models/ovmodels/bge-small-en-v1.5-ov"
 
 def completion_to_prompt(completion):
@@ -12,12 +12,12 @@ def completion_to_prompt(completion):
 
 
 llm = OpenVINOLLM(
-    model_id_or_path=str(model_path),
-    context_window=3900,
-    max_new_tokens=1000,
-    model_kwargs={"ov_config": ov_config},
-    device_map="GPU",
-    completion_to_prompt=completion_to_prompt,
+  model_id_or_path=str(model_path),
+  context_window=3900,
+  max_new_tokens=1000,
+  model_kwargs={"ov_config": ov_config},
+  device_map="GPU",
+  completion_to_prompt=completion_to_prompt,
 )
 
 embedding = OpenVINOEmbedding(model_id_or_path=embedding_model_path, device="GPU")

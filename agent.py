@@ -5,6 +5,10 @@ from llama_index.core.tools import QueryEngineTool
 from models.ovmodels import llm, embedding
 from tools.math import multiply_tool, add_tool
 
+from pathlib import Path
+
+text_example_en_path = Path("text_example_en.pdf")
+
 Settings.embed_model = embedding
 Settings.llm = llm
 loader = PyMuPDFReader()
