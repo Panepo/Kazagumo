@@ -163,3 +163,6 @@ archive
 ovmodels
 hfmodels
 test.py
+models
+kernel.errors.txt
+*.pdf

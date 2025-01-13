@@ -8,21 +8,7 @@ def pip_install(*args):
         cli_args.extend(str(arg).split(" "))
     subprocess.run([sys.executable, "-m", "pip", "install", *cli_args], check=True)
 
-pip_install(
-    "--extra-index-url",
-    "https://download.pytorch.org/whl/cpu",
-    "llama-index",
-    "faiss-cpu",
-    "pymupdf",
-    "langchain",
-    "llama-index-readers-file",
-    "llama-index-vector-stores-faiss",
-    "llama-index-llms-langchain",
-    "llama-index-llms-huggingface>=0.3.0,<0.3.4",
-    "llama-index-embeddings-huggingface>=0.3.0",
-    "python-dotenv",
-)
-pip_install("git+https://github.com/huggingface/optimum-intel.git", "git+https://github.com/openvinotoolkit/nncf.git", "datasets", "accelerate", "gradio")
-pip_install("--pre", "-U", "openvino>=2024.2", "--extra-index-url", "https://storage.openvinotoolkit.org/simple/wheels/nightly")
-pip_install("--pre", "-U", "openvino-tokenizers[transformers]>=2024.2", "--extra-index-url", "https://storage.openvinotoolkit.org/simple/wheels/nightly")
-pip_install("--no-deps", "llama-index-llms-openvino>=0.3.1", "llama-index-embeddings-openvino>=0.2.1", "llama-index-postprocessor-openvino-rerank>=0.2.0")
+pip_install("-Uq", "pip")
+pip_install("gradio>=4.19", "python-dotenv", "transformers", "bitsandbytes", 'accelerate>=0.26.0')
+pip_install("--index-url", "https://download.pytorch.org/whl/cu124", "torch", "torchvision", "torchaudio")
+pip_install("llama_index", "llama-index-llms-ollama", "llama-index-embeddings-ollama")
