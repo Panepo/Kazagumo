@@ -5,8 +5,8 @@ load_dotenv()
 backend = os.getenv("BACKEND")
 
 if backend == "ollama":
-  from modelsOllama import llm
-  from embeddingsOllama import embedding
+  from llm_ollama import llm
+  from emb_ollama import embedding
 else:
   raise ValueError(f"Unknown backend: {backend}")
 
